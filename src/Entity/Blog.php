@@ -37,9 +37,10 @@ class Blog
     private $imagen;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Usuario", inversedBy="blogs")
+     * @ORM\JoinColumn(nullable=false)
      */
-    private $idUsuaro;
+    private $idUsuario;
 
     public function getId(): ?int
     {
@@ -94,15 +95,16 @@ class Blog
         return $this;
     }
 
-    public function getIdUsuaro(): ?int
+    public function getIdUsuario(): ?Usuario
     {
-        return $this->idUsuaro;
+        return $this->idUsuario;
     }
 
-    public function setIdUsuaro(int $idUsuaro): self
+    public function setIdUsuario(?Usuario $idUsuario): self
     {
-        $this->idUsuaro = $idUsuaro;
+        $this->idUsuario = $idUsuario;
 
         return $this;
     }
+
 }
