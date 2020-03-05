@@ -27,11 +27,40 @@ class BlogRepository extends ServiceEntityRepository
     {
         $entityManager = $this->getEntityManager();
         $query = $entityManager->createQuery(
-            'SELECT b.titulo, b.fecha, u.name
+            'SELECT b.titulo, b.fecha, b.imagen, u.name
             FROM App\Entity\Blog b
             INNER JOIN b.idUser u
             ORDER BY b.fecha DESC'
         );
+
+        return $query->getResult();
+    }
+
+    public function seleccionarBlog($idBlog): array
+    {
+        $entityManager = $this->getEntityManager();
+        $query = $entityManager->createQuery(
+            'SELECT b.titulo, b.fecha, b.contenido, b.imagen, u.name
+            FROM App\Entity\Blog b
+            INNER JOIN b.idUser u
+            WHERE b.id = :id'
+        );
+        $query->setParameter('id', $idBlog);
+
+        return $query->getResult();
+    }
+
+    public function seleccionarBlogsUsuario($idUsuario): array
+    {
+        $entityManager = $this->getEntityManager();
+        $query = $entityManager->createQuery(
+            'SELECT b.titulo, b.fecha, b.contenido, b.imagen, u.name
+            FROM App\Entity\Blog b
+            INNER JOIN b.idUser u
+            WHERE b.idUser = :id
+            ORDER BY b.fecha DESC'
+        );
+        $query->setParameter('id', $idUsuario);
 
         return $query->getResult();
     }
