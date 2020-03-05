@@ -45,7 +45,7 @@ class FormContacto extends Component {
             if (datos.estado) {
                 //Se reinicia formulario
                 this.setState({ success: { estado: true, mensaje: datos.respuesta } }, () => {
-                    setTimeout(() => this.setState({ ...this.estadoInicial }), 5000);
+                    setTimeout(() => this.setState({ ...this.estadoInicial }), 3000);
                 });
             }
         }

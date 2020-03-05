@@ -1,0 +1,18 @@
+.hero-container {
+    min-height: 90vh;
+    background-image: url(./assets/img/hero-min.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.text-hero {
+    padding: 100px;
+    background: #5d5c5c8a;
+    width: 100%;
+    color: #e6e6e6;
+}
+
+.descripcion-blog{
+    min-height: 90vh;
+}

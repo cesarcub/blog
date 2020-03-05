@@ -9,7 +9,7 @@ const Layout = (props) => {
     return (
         <>
             <Navbar />
-            <div className="container-fluid py-3">
+            <div className="container-fluid p-0">
                 {props.children}
 
                 {/* Modal de registro */}
