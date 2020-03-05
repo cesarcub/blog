@@ -2,7 +2,7 @@
 async function request(method, url, body, auth, upload) {
     try {
         //URL de ambiente para hacer peticiones al back
-        const urlApi = process.env.REACT_APP_API_URL;
+        const urlApi = process.env.REACT_APP_API;
 
         //Opciones de petición
         const requestOptions = {

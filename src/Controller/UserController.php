@@ -17,7 +17,7 @@ class UserController extends AbstractController
     /**
      * Método para reigistro de usuarios
      * @param Request $request Petición enviada desde front con datos JSON
-     * @Route("/api/register", name="registro")
+     * @Route("/register", name="registro")
      */
     public function register(
         Request $request,
@@ -31,6 +31,7 @@ class UserController extends AbstractController
             $user = new User();
 
             $user->setEmail($request->username);
+            $user->setName($request->name);
             $password = $encode->encodePassword($user, $request->password);
             $user->setPassword($password);
             $user->setRoles([]);
