@@ -3,7 +3,6 @@
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -18,18 +17,21 @@ class UserController extends AbstractController
     /**
      * Método para reigistro de usuarios
      * @param Request $request Petición enviada desde front con datos JSON
-     * @Route("/api/register")
+     * @Route("/api/register", name="registro")
      */
-    public function register(Request $request, UserPasswordEncoderInterface $encode, ValidatorInterface $validator): JsonResponse
-    {
+    public function register(
+        Request $request,
+        UserPasswordEncoderInterface $encode,
+        ValidatorInterface $validator
+    ): JsonResponse {
         try {
-            $response = json_decode($request->getContent());
+            $request = json_decode($request->getContent());
             $entityManager = $this->getDoctrine()->getManager();
 
             $user = new User();
 
-            $user->setEmail($response->username);
-            $password = $encode->encodePassword($user, $response->password);
+            $user->setEmail($request->username);
+            $password = $encode->encodePassword($user, $request->password);
             $user->setPassword($password);
             $user->setRoles([]);
 
