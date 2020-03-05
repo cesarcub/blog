@@ -1,19 +1,30 @@
-import React, { Component } from 'react';
-import { Grid } from '@material-ui/core';
+import React from 'react';
+import Navbar from '../Componentes/Navbar';
+import { Modal } from '../Componentes/Modal';
 
 const Layout = (props) => {
     return (
-        <Grid
-            container
-            direction="row"
-        >
-            <Grid item xs={12}>
-                Menú
-            </Grid>
-            <Grid item xs={12}>
+        <>
+            <Navbar />
+            <div className="container-fluid py-3">
                 {props.children}
-            </Grid>
-        </Grid>
+
+                {/* Modal de registro */}
+                <Modal target="modalRegistro" titulo="Registro">
+
+                </Modal>
+
+                {/* Modal de log-in */}
+                <Modal target="modalLogin" titulo="Log-in">
+
+                </Modal>
+
+                {/* Modal de contacto */}
+                <Modal target="modalContacto" titulo="Contacto">
+
+                </Modal>
+            </div>
+        </>
     );
 }
 
